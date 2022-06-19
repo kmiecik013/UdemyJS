@@ -1,11 +1,17 @@
-for (let i = 0; i< document.querySelectorAll(".drum").length; i++)
+for (let i = 0; i< document.querySelectorAll(".drum").length; i++) 
 
-document.querySelectorAll(".drum")[i].addEventListener("click", clickHandler);
+document.querySelectorAll(".drum")[i].addEventListener("keydown", clickHandler);
 
+buttonAnimation()
+//function clickHandler() {
+  //alert("drum was presssed")
+//}
 
-function clickHandler() {
-  alert("drum was clicked")
+document.addEventListener("keydown", function(event)) {
+  console.log()
 }
 
 
+function buttonAnimation() {
 
+}
