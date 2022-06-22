@@ -1,21 +1,35 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require("express");
+const bodyParser = require("body-parser");
+const port = 3000;
 
-app.get('/', (req, res) => {
+const app = express();
+
+app.set("view engine", "ejs");
+
+app.get("/", (req, res) => {
   let today = new Date();
+  let currentDay = today.getDay();
+  let day = "";
 
-  if (today.getDay() === 6 || today.getDate() === 0) {
-    res.write("<h1>Yay it's the weekend</h1>")
+  if (currentDay === 6) {
+    day = "Saturday";
+  } else if (currentDay === 0) {
+    day = "Sunday";
+  } else if (currentDay === 1) {
+    day = "Monday";
+  } else if (currentDay === 2) {
+    day = "Tuesday";
+  } else if (currentDay === 3) {
+    day = "Wednesday";
+  } else if (currentDay === 4) {
+    day = "Thursday";
+  } else if (currentDay === 5) {
+    day = "Friday";
   }
-
-  else {
-    res.write("<h1>DAarn workday</h1>")
-
-    res.send()
-  }
-})
+  res.render("list", { kindOfDay: day });
+  console.log(currentDay, "curent day");
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
